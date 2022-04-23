@@ -44,7 +44,10 @@ body {
   display: flex;
 }
 
-#devBtn,#editorBtn,#compBtn,#regBtn {
+#devBtn,
+#editorBtn,
+#compBtn,
+#regBtn {
   opacity: 0;
 }
 
@@ -142,6 +145,37 @@ body {
   width: 300px;
 }
 
+/* Dev Login Screen */
+.devLogin{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-1500px);
+  position: absolute;
+}
+
+.promptDev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.devLoginForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#devLoginBtn{
+  margin-top: 20px;
+}
+
+#rightArrow{
+  cursor: pointer;
+}
+
 /* Components */
 
 .btn {
@@ -179,19 +213,24 @@ body {
 }
 
 @keyframes shake {
-  10%, 90% {
-    transform: rotate(30deg)
-  }
-  
-  20%, 80% {
-    transform: rotate(-30deg)
+  10%,
+  90% {
+    transform: rotate(30deg);
   }
 
-  30%, 50%, 70% {
-    transform: rotate(30deg)
+  20%,
+  80% {
+    transform: rotate(-30deg);
   }
 
-  40%, 60% {
-    transform: rotate(-30deg)
+  30%,
+  50%,
+  70% {
+    transform: rotate(30deg);
+  }
+
+  40%,
+  60% {
+    transform: rotate(-30deg);
   }
 }

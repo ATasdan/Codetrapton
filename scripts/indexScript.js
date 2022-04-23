@@ -6,6 +6,7 @@ const btn3 = document.getElementById("compBtn").style;
 const btn4 = document.getElementById("regBtn").style;
 const welcomeContainer = document.querySelector(".welcome").style;
 const registerContainer = document.querySelector(".register").style;
+const devLoginContainer = document.querySelector(".devLogin").style
 
 if (history.scrollRestoration) {
   history.scrollRestoration = "manual";
@@ -46,7 +47,6 @@ const init = () => {
 init();
 
 const register = () => {
-  console.log("welcomeContainer");
   welcomeContainer.transition = "600ms";
   welcomeContainer.transform = "translateY(-1500px)";
   setTimeout(() => {
@@ -55,7 +55,22 @@ const register = () => {
   }, 300);
 };
 
-const goBack = () => {
+const devLogin = () => {
+  welcomeContainer.transition = "600ms";
+  welcomeContainer.transform = "translateX(1500px)";
+  
+  setTimeout(() => {
+    devLoginContainer.transition = "600ms";
+    devLoginContainer.transform = "none";
+  }, 300);
+}
+
+const goBackDown = () => {
   registerContainer.transform = "translateY(1500px)";
   setTimeout((welcomeContainer.transform = "none"), 300);
 };
+
+const goBackRight = () => {
+  devLoginContainer.transform = "translateX(-1500px)"
+  setTimeout((welcomeContainer.transform = "none"), 300);
+}

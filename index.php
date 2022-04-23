@@ -24,7 +24,7 @@
         />
       </div>
       <div class="btnContainer">
-        <button id="devBtn" class="btn">developer login</button>
+        <button onclick="devLogin()" id="devBtn" class="btn">developer login</button>
         <button id="editorBtn" class="btn">editor login</button>
         <button id="compBtn" class="btn">company login</button>
       </div>
@@ -32,7 +32,7 @@
     </div>
 
     <div class="register">
-      <i id="upArrow" onclick="goBack()" class="fa-solid fa-arrow-up"></i>
+      <i id="upArrow" onclick="goBackDown()" class="fa-solid fa-arrow-up"></i>
       <div class="promptReg">
         <h1 class="registerText">Register to Codetrapton</h1>
         <img class="monkey" src="./assets/monkey.jpg" alt="" srcset="" />
@@ -342,6 +342,29 @@
         </div>
 
         <button id="registerBtn" type="submit" class="btn">register</button>
+      </form>
+    </div>
+
+    <div class="devLogin">
+      <i
+        id="rightArrow"
+        onclick="goBackRight()"
+        class="fa-solid fa-arrow-right"
+      ></i>
+      <div class="promptDev">
+        <h1 class="registerText">Login to Codetrapton</h1>
+        <img class="monkey" src="./assets/monkey.jpg" alt="" srcset="" />
+      </div>
+      <form class="devLoginForm" action="">
+        <div class="fieldContainer">
+          <h1>Username</h1>
+          <input type="text" name="phone" />
+        </div>
+        <div class="fieldContainer">
+          <h1>Password</h1>
+          <input type="password" name="phone" />
+        </div>
+        <button id="devLoginBtn" class="btn">login</button>
       </form>
     </div>
 
