@@ -1,0 +1,197 @@
+@import "colors.css";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Layout */
+/* Welcome Screen */
+.welcome {
+  width: 500px;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.promptWel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#welcomeText {
+  opacity: 0;
+  transition: ease-in 500ms;
+}
+
+.monkey {
+  width: 40px;
+  height: 40px;
+}
+
+.btnContainer {
+  display: flex;
+}
+
+#devBtn,#editorBtn,#compBtn,#regBtn {
+  opacity: 0;
+}
+
+/* Register Screen */
+.register {
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+  width: 1000px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  transform: translateY(1500px);
+}
+
+.promptReg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 450px;
+  width: 700px;
+  align-items: flex-end;
+  position: relative;
+}
+
+.fieldContainer {
+  width: 300px;
+}
+
+.fieldContainer h1 {
+  font-size: 17px;
+}
+
+.fieldContainer input {
+  background-color: var(--color-bg);
+  border: none;
+  height: 50px;
+  width: 275px;
+  border-radius: 25px;
+  padding: 15px;
+}
+
+.fieldContainer input:focus {
+  outline: none;
+}
+
+.fieldContainer select {
+  border: none;
+  height: 50px;
+  width: 275px;
+  border-radius: 25px;
+  padding: 15px;
+  background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16' fill='%23000000' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>")
+    no-repeat;
+  background-position: calc(100% - 0.75rem) center !important;
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  padding-right: 2rem !important;
+  background-color: var(--color-bg);
+}
+
+.fieldContainer select:focus {
+  outline: none;
+}
+
+.radioContainer {
+  padding-left: 55px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.radioContainer input {
+  color: var(--color-primary);
+  background-color: var(--color-primary);
+  border: var(--color-primary);
+}
+
+.radioContainer label {
+  font-weight: 600;
+}
+
+#registerBtn {
+  position: absolute;
+  bottom: 0;
+  align-self: center;
+  width: 300px;
+}
+
+/* Components */
+
+.btn {
+  width: 150px;
+  height: 50px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--color-primary);
+  color: white;
+  margin: 5px;
+  font-size: 15px;
+}
+
+.btn:hover {
+  background-color: var(--color-secondary);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+#upArrow {
+  font-size: 30px;
+}
+
+#upArrow:hover {
+  cursor: pointer;
+}
+
+/* Monkey animation */
+
+#welcomeMonkey {
+  animation: shake 0.6s;
+  position: absolute;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: rotate(30deg)
+  }
+  
+  20%, 80% {
+    transform: rotate(-30deg)
+  }
+
+  30%, 50%, 70% {
+    transform: rotate(30deg)
+  }
+
+  40%, 60% {
+    transform: rotate(-30deg)
+  }
+}
