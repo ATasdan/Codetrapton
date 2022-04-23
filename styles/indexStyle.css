@@ -146,7 +146,7 @@ body {
 }
 
 /* Dev Login Screen */
-.devLogin{
+.devLogin {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -161,18 +161,18 @@ body {
   align-items: center;
 }
 
-.devLoginForm{
+.devLoginForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#devLoginBtn{
+#devLoginBtn {
   margin-top: 20px;
 }
 
-#rightArrow{
+#rightArrow {
   cursor: pointer;
 }
 
