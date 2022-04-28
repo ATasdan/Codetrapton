@@ -6,7 +6,9 @@ const btn3 = document.getElementById("compBtn").style;
 const btn4 = document.getElementById("regBtn").style;
 const welcomeContainer = document.querySelector(".welcome").style;
 const registerContainer = document.querySelector(".register").style;
-const devLoginContainer = document.querySelector(".devLogin").style
+const devLoginContainer = document.querySelector(".devLogin").style;
+const editorLoginContainer = document.querySelector(".editorLogin").style;
+const companyLoginContainer = document.querySelector(".companyLogin").style
 
 if (history.scrollRestoration) {
   history.scrollRestoration = "manual";
@@ -58,10 +60,30 @@ const register = () => {
 const devLogin = () => {
   welcomeContainer.transition = "600ms";
   welcomeContainer.transform = "translateX(1500px)";
-  
+
   setTimeout(() => {
     devLoginContainer.transition = "600ms";
     devLoginContainer.transform = "none";
+  }, 300);
+};
+
+const editorLogin = () => {
+  welcomeContainer.transition = "600ms";
+  welcomeContainer.transform = "translateY(1500px)";
+
+  setTimeout(() => {
+    editorLoginContainer.transition = "600ms";
+    editorLoginContainer.transform = "none";
+  }, 300);
+};
+
+const companyLogin = () => {
+  welcomeContainer.transition = "600ms";
+  welcomeContainer.transform = "translateX(-1500px)";
+
+  setTimeout(() => {
+    companyLoginContainer.transition = "600ms";
+    companyLoginContainer.transform = "none";
   }, 300);
 }
 
@@ -71,6 +93,16 @@ const goBackDown = () => {
 };
 
 const goBackRight = () => {
-  devLoginContainer.transform = "translateX(-1500px)"
+  devLoginContainer.transform = "translateX(-1500px)";
+  setTimeout((welcomeContainer.transform = "none"), 300);
+};
+
+const goBackUp = () => {
+  editorLoginContainer.transform = "translateY(-1500px)";
+  setTimeout((welcomeContainer.transform = "none"), 300);
+};
+
+const goBackLeft = () => {
+  companyLoginContainer.transform = "translateX(1500px)";
   setTimeout((welcomeContainer.transform = "none"), 300);
 }

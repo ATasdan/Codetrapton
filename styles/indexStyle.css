@@ -172,10 +172,61 @@ body {
   margin-top: 20px;
 }
 
-#rightArrow {
+#arrow {
   cursor: pointer;
+  font-size: 30px;
 }
 
+/* Editor Login Screen */
+.editorLogin{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  transform: translateY(-1500px);
+}
+
+.blueLine{
+  width: 500px;
+  height: 20px;
+  background-color: var(--color-primary);
+  border: none;
+  position: absolute;
+  transform: translateY(-125px);
+}
+
+.editorText{
+  align-self: flex-start;
+  font-size: 50px;
+  transform: translateX(-50px);
+}
+
+/* Company Login Screen */
+.companyLogin{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  transform: translateX(1500px);
+}
+
+.blueLine{
+  width: 500px;
+  height: 20px;
+  background-color: var(--color-primary);
+  border: none;
+  position: absolute;
+  transform: translateY(-120px);
+  
+}
+
+.companyText{
+  align-self: flex-start;
+  font-size: 50px;
+  transform: translateX(-50px);
+}
 /* Components */
 
 .btn {
@@ -195,14 +246,6 @@ body {
 
 .btn:active {
   transform: scale(0.97);
-}
-
-#upArrow {
-  font-size: 30px;
-}
-
-#upArrow:hover {
-  cursor: pointer;
 }
 
 /* Monkey animation */

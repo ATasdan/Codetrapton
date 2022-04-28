@@ -12,6 +12,9 @@
     <title>Codetrapton</title>
   </head>
   <body>
+    <?php
+      require('./db/config.php');
+    ?>
     <div class="welcome">
       <div class="promptWel">
         <h1 id="welcomeText" class="welcomeText">Welcome to Codetrapton</h1>
@@ -25,14 +28,14 @@
       </div>
       <div class="btnContainer">
         <button onclick="devLogin()" id="devBtn" class="btn">developer login</button>
-        <button id="editorBtn" class="btn">editor login</button>
-        <button id="compBtn" class="btn">company login</button>
+        <button onclick="editorLogin()" id="editorBtn" class="btn">editor login</button>
+        <button onclick="companyLogin()" id="compBtn" class="btn">company login</button>
       </div>
       <button onclick="register()" class="btn" id="regBtn">register</button>
     </div>
 
     <div class="register">
-      <i id="upArrow" onclick="goBackDown()" class="fa-solid fa-arrow-up"></i>
+      <i id="arrow" onclick="goBackDown()" class="fa-solid fa-arrow-up"></i>
       <div class="promptReg">
         <h1 class="registerText">Register to Codetrapton</h1>
         <img class="monkey" src="./assets/monkey.jpg" alt="" srcset="" />
@@ -347,7 +350,7 @@
 
     <div class="devLogin">
       <i
-        id="rightArrow"
+        id="arrow"
         onclick="goBackRight()"
         class="fa-solid fa-arrow-right"
       ></i>
@@ -368,6 +371,55 @@
       </form>
     </div>
 
+    <div class="editorLogin">
+    <i
+        id="arrow"
+        onclick="goBackUp()"
+        class="fa-solid fa-arrow-down"
+      ></i>
+      <h1 class="editorText">EDITOR</h1>
+      <hr class="blueLine">
+      <div class="promptDev">
+        <h1 class="registerText">Login to Codetrapton</h1>
+        <img class="monkey" src="./assets/monkey.jpg" alt="" srcset="" />
+      </div>
+      <form class="devLoginForm" action="">
+        <div class="fieldContainer">
+          <h1>Username</h1>
+          <input type="text" name="phone" />
+        </div>
+        <div class="fieldContainer">
+          <h1>Password</h1>
+          <input type="password" name="phone" />
+        </div>
+        <button id="editorLoginBtn" class="btn">login</button>
+      </form>
+    </div>
+
+    <div class="companyLogin">
+    <i
+        id="arrow"
+        onclick="goBackLeft()"
+        class="fa-solid fa-arrow-left"
+      ></i>
+      <h1 class="companyText">COMPANY</h1>
+      <hr class="blueLine">
+      <div class="promptDev">
+        <h1 class="registerText">Login to Codetrapton</h1>
+        <img class="monkey" src="./assets/monkey.jpg" alt="" srcset="" />
+      </div>
+      <form class="devLoginForm" action="">
+        <div class="fieldContainer">
+          <h1>Username</h1>
+          <input type="text" name="phone" />
+        </div>
+        <div class="fieldContainer">
+          <h1>Password</h1>
+          <input type="password" name="phone" />
+        </div>
+        <button id="editorLoginBtn" class="btn">login</button>
+      </form>
+    </div>
     <script src="./scripts/indexScript.js"></script>
   </body>
 </html>
