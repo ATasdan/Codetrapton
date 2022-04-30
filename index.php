@@ -16,7 +16,7 @@
   ?>
   <div class="welcome">
     <div class="promptWel">
-      <h1 id="welcomeText" class="welcomeText">Welcome 2345 Codetrapton</h1>
+      <h1 id="welcomeText" class="welcomeText">Welcome 234567 Codetrapton</h1>
       <img id="welcomeMonkey" class="monkey" src="./assets/monkey.jpg" alt="" srcset="" />
     </div>
     <div class="btnContainer">
