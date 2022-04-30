@@ -17,7 +17,7 @@
     ?>
     <div class="welcome">
       <div class="promptWel">
-        <h1 id="welcomeText" class="welcomeText">Welcome to Codetrapton Bora</h1>
+        <h1 id="welcomeText" class="welcomeText">Welcome to Codetrapton Boraa</h1>
         <img
           id="welcomeMonkey"
           class="monkey"
