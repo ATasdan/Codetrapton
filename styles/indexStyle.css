@@ -183,7 +183,7 @@ body {
 }
 
 /* Editor Login Screen */
-.editorLogin{
+.editorLogin {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -192,7 +192,7 @@ body {
   transform: translateY(-1500px);
 }
 
-.blueLine{
+.blueLine {
   width: 500px;
   height: 20px;
   background-color: var(--color-primary);
@@ -201,14 +201,14 @@ body {
   transform: translateY(-125px);
 }
 
-.editorText{
+.editorText {
   align-self: flex-start;
   font-size: 50px;
   transform: translateX(-50px);
 }
 
 /* Company Login Screen */
-.companyLogin{
+.companyLogin {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -217,17 +217,16 @@ body {
   transform: translateX(1500px);
 }
 
-.blueLine{
+.blueLine {
   width: 500px;
   height: 20px;
   background-color: var(--color-primary);
   border: none;
   position: absolute;
   transform: translateY(-120px);
-  
 }
 
-.companyText{
+.companyText {
   align-self: flex-start;
   font-size: 50px;
   transform: translateX(-50px);
