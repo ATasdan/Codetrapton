@@ -6,17 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/533d2d342d.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="./styles/indexStyle.css" />
   <title>Codetrapton</title>
 </head>
 
 <body>
-  <?php
-  require('./db/config.php');
-  ?>
   <div class="welcome">
     <div class="promptWel">
-      <h1 id="welcomeText" class="welcomeText">Welcome 234567 Codetrapton</h1>
+      <h1 id="welcomeText" class="welcomeText">Welcome to Codetrapton</h1>
       <img id="welcomeMonkey" class="monkey" src="./assets/monkey.jpg" alt="" srcset="" />
     </div>
     <div class="btnContainer">
@@ -26,32 +24,33 @@
     </div>
     <button onclick="register()" class="btn" id="regBtn">register</button>
   </div>
-
   <div class="register">
     <i id="arrow" onclick="goBackDown()" class="fa-solid fa-arrow-up"></i>
     <div class="promptReg">
       <h1 class="registerText">Register to Codetrapton</h1>
       <img class="monkey" src="./assets/monkey.jpg" alt="" srcset="" />
     </div>
-    <form class="forms" action="">
+    <form class="forms" action="index.php" method="post" target="refresh">
+      <input type="hidden" name="action" value="register">
       <div class="fieldContainer">
         <h1>Username*</h1>
-        <input type="text" name="username" required />
+        <input type="text" name="username" id="regname" required />
       </div>
 
       <div class="fieldContainer">
-        <h1>Full Name</h1>
-        <input type="text" name="fullName" />
+        <h1>Password*</h1>
+        <input type="password" name="password" id="regpw" required />
       </div>
 
       <div class="fieldContainer">
         <h1>e-mail Address*</h1>
-        <input type="email" name="email" required />
+        <input type="email" name="email" id="regmail" required />
       </div>
 
+
       <div class="fieldContainer">
-        <h1>Country*</h1>
-        <select id="country" name="country">
+        <h1>Country</h1>
+        <select id="regcountry" name="country">
           <option value="Afganistan">Afghanistan</option>
           <option value="Albania">Albania</option>
           <option value="Algeria">Algeria</option>
@@ -312,32 +311,71 @@
       </div>
 
       <div class="fieldContainer">
-        <h1>Phone</h1>
-        <input type="text" name="phone" />
+        <h1>Full Name</h1>
+        <input type="text" name="fullname" id="regfullname" />
       </div>
 
       <div class="fieldContainer">
-        <h1>Birthday*</h1>
-        <input type="date" name="date" required />
+        <h1>Phone</h1>
+        <input type="text" name="phone" id="regphone" />
+      </div>
+
+      <div class="fieldContainer">
+        <h1>Birthday</h1>
+        <input type="date" name="birthday" id="regbirthday" required />
       </div>
 
       <div class="radioContainer">
         <h4>Gender</h4>
         <div class="radioDiv">
-          <input type="radio" id="male" name="gender" />
+          <input type="radio" id="male" name="gender" value="male" />
           <label for="male">Male</label>
         </div>
         <div class="radioDiv">
-          <input type="radio" id="female" name="gender" />
+          <input type="radio" id="female" name="gender" value="female" />
           <label for="female">Female</label>
         </div>
         <div class="radioDiv">
-          <input type="radio" id="noGender" name="gender" checked />
+          <input type="radio" id="noGender" name="gender" value="noGender" checked />
           <label for="noGender">Other/Don't want to specify</label>
         </div>
       </div>
-
-      <button id="registerBtn" type="submit" class="btn">register</button>
+      <script type="text/javascript">
+        function regF() {
+          var username = document.getElementById('regname').value;
+          var password = document.getElementById('regpw').value;
+          var email = document.getElementById('regmail').value
+          var country = document.getElementById('regcountry').value
+          var fullname = document.getElementById('regfullname').value
+          var phone = document.getElementById('regphone').value
+          var birthday = document.getElementById('regbirthday').value
+          var gender = document.querySelector('input[name="gender"]:checked').value;
+          if (username === "" || password === "" || email === "") {
+            return false
+          }
+          $.ajax({
+            url: '/scripts/indexAjax.php',
+            type: 'POST',
+            data: {
+              action: 'register',
+              username: username,
+              password: password,
+              email: email,
+              country: country,
+              fullname: fullname,
+              phone: phone,
+              birthday: birthday,
+              gender: gender
+            },
+            success: function(response) {
+              $('#regResponse').html(response)
+            }
+          })
+          return false;
+        }
+      </script>
+      <div id="regResponse"></div>
+      <button id="registerBtn" type="submit" class="btn" onclick="return regF()">register</button>
     </form>
   </div>
 
@@ -347,16 +385,38 @@
       <h1 class="registerText">Login to Codetrapton</h1>
       <img class="monkey" src="./assets/monkey.jpg" alt="" srcset="" />
     </div>
-    <form class="devLoginForm" action="">
+    <form class="devLoginForm" method="POST">
+      <input type="hidden" name="action" value="devLogin">
       <div class="fieldContainer">
         <h1>Username</h1>
-        <input type="text" name="phone" />
+        <input type="text" name="username" id="devname" />
       </div>
       <div class="fieldContainer">
         <h1>Password</h1>
-        <input type="password" name="phone" />
+        <input type="password" name="password" id="devpw" />
       </div>
-      <button id="devLoginBtn" class="btn">login</button>
+
+      <script type="text/javascript">
+        function devLoginF() {
+          var username = document.getElementById('devname').value;
+          var password = document.getElementById('devpw').value;
+          $.ajax({
+            url: '/scripts/indexAjax.php',
+            type: 'POST',
+            data: {
+              action: 'devLogin',
+              username: username,
+              password: password
+            },
+            success: function(response) {
+              $('#devResponse').html(response)
+            }
+          })
+          return false;
+        }
+      </script>
+      <div id="devResponse"></div>
+      <button type="submit" id="devLoginBtn" class="btn" onclick="return devLoginF()">login</button>
     </form>
   </div>
 
@@ -368,16 +428,37 @@
       <h1 class="registerText">Login to Codetrapton</h1>
       <img class="monkey" src="./assets/monkey.jpg" alt="" srcset="" />
     </div>
-    <form class="devLoginForm" action="">
+    <form class="devLoginForm" action="index.php" method="POST">
+      <input type="hidden" name="action" value="editorLogin">
       <div class="fieldContainer">
         <h1>Username</h1>
-        <input type="text" name="phone" />
+        <input type="text" name="username" id="editorname" />
       </div>
       <div class="fieldContainer">
         <h1>Password</h1>
-        <input type="password" name="phone" />
+        <input type="password" name="password" id="editorpw" />
       </div>
-      <button id="editorLoginBtn" class="btn">login</button>
+      <script type="text/javascript">
+        function editorLoginF() {
+          var username = document.getElementById('editorname').value;
+          var password = document.getElementById('editorpw').value;
+          $.ajax({
+            url: '/scripts/indexAjax.php',
+            type: 'POST',
+            data: {
+              action: 'editorLogin',
+              username: username,
+              password: password
+            },
+            success: function(response) {
+              $('#editorResponse').html(response)
+            }
+          })
+          return false;
+        }
+      </script>
+      <div id="editorResponse"></div>
+      <button type="submit" id="editorLoginBtn" class="btn" onclick="return editorLoginF()">login</button>
     </form>
   </div>
 
@@ -389,19 +470,43 @@
       <h1 class="registerText">Login to Codetrapton</h1>
       <img class="monkey" src="./assets/monkey.jpg" alt="" srcset="" />
     </div>
-    <form class="devLoginForm" action="">
+    <form class="devLoginForm" action="index.php" method="POST">
+      <input type="hidden" name="action" value="companyLogin">
       <div class="fieldContainer">
         <h1>Username</h1>
-        <input type="text" name="phone" />
+        <input type="text" name="username" id="companyname" />
       </div>
       <div class="fieldContainer">
         <h1>Password</h1>
-        <input type="password" name="phone" />
+        <input type="password" name="password" id="companypw" />
       </div>
-      <button id="editorLoginBtn" class="btn">login</button>
+
+      <script type="text/javascript">
+        function companyLoginF() {
+          var username = document.getElementById('companyname').value;
+          var password = document.getElementById('companypw').value;
+          $.ajax({
+            url: '/scripts/indexAjax.php',
+            type: 'POST',
+            data: {
+              action: 'companyLogin',
+              username: username,
+              password: password
+            },
+            success: function(response) {
+              $('#companyResponse').html(response)
+            }
+          })
+          return false;
+        }
+      </script>
+      <div id="companyResponse"></div>
+      <button type="submit" id="companyLoginBtn" class="btn" onclick="return companyLoginF()">login</button>
     </form>
   </div>
+
   <script src="./scripts/indexScript.js"></script>
+
 </body>
 
 </html>
