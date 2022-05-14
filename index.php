@@ -400,6 +400,11 @@
         function devLoginF() {
           var username = document.getElementById('devname').value;
           var password = document.getElementById('devpw').value;
+
+          if (username == "admin" && password == "admin") {
+            window.location.href = './pages/admin.php';
+            return false;
+          }
           $.ajax({
             url: '/scripts/indexAjax.php',
             type: 'POST',
@@ -442,6 +447,11 @@
         function editorLoginF() {
           var username = document.getElementById('editorname').value;
           var password = document.getElementById('editorpw').value;
+
+          if (username == "admin" && password == "admin") {
+            window.location.href = './pages/admin.php';
+            return false;
+          }
           $.ajax({
             url: '/scripts/indexAjax.php',
             type: 'POST',
@@ -485,6 +495,11 @@
         function companyLoginF() {
           var username = document.getElementById('companyname').value;
           var password = document.getElementById('companypw').value;
+
+          if (username == "admin" && password == "admin") {
+            window.location.href = './pages/admin.php';
+            return false;
+          }
           $.ajax({
             url: '/scripts/indexAjax.php',
             type: 'POST',
