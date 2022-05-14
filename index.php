@@ -23,7 +23,13 @@
       <button onclick="companyLogin()" id="compBtn" class="btn">company login</button>
     </div>
     <button onclick="register()" class="btn" id="regBtn">register</button>
+    <button onclick="companychallenge()" class="btn" id="compchalBtn">Company Challenge</button>
   </div>
+  <script>
+      function companychallenge(){
+        document.location.href="scripts/companyChallengeContest.php";
+      }
+  </script>
   <div class="register">
     <i id="arrow" onclick="goBackDown()" class="fa-solid fa-arrow-up"></i>
     <div class="promptReg">
