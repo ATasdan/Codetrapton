@@ -15,7 +15,7 @@
     <div class="sponsorPart">
         <div class="btnContainer">
             <button onclick="sponsor()" class="btn" id="sponsorBtn">sponsor</button>
-            <button onclick="nextPage()" class="btn" id="gotonextPage">sponsor</button>
+            <button onclick="nextPage()" class="btn" id="gotonextPage">nextPage</button>
             <input type='text' id='search' name='search' placeholder='Enter userid 1-8'>
             <input type='button' value='Search' id='but_search'>
             <br/>
@@ -107,16 +107,14 @@
             }
         }
     </script>
-</body>
-
-
-<script type="text/javascript">
+    <script type="text/javascript">
     function sponsor(){
         alert('you have clicked me');
     }
 
     function nextPage(){
-        document.location.href="scripts/createSponsor.php";
+        document.location.href="createSponsor.php";
     }
 </script>
+</body>
 </html>
