@@ -93,11 +93,12 @@
                     var fullname = response[i].fullname;
                     var email = response[i].email;
 
-                    var tr_str = "<tr>" +
+                    var tr_str = "<tr id= " + id + ">" +
                         "<td align='center'>" + id + "</td>" +
                         "<td align='center'>" + username + "</td>" +
                         "<td align='center'>" + fullname + "</td>" +
                         "<td align='center'>" + email + "</td>" +
+                        "<td align='center'> <button onClick='deleteFromTable(" + id + ")'>DELETE </button> </td>" +
                         "</tr>";
 
                     $("#userTable tbody").append(tr_str);
@@ -112,6 +113,23 @@
         }
     </script>
     <script type="text/javascript">
+        function deleteFromTable(id) {
+            var a = "" + id;
+            document.getElementById(a).style.display = "none";
+            $.ajax({
+                url: 'ajaxfile.php',
+                type: 'post',
+                data: {
+                    request: 'deletebyid',
+                    user_id: id
+                },
+                dataType: 'json',
+                success: function(response) {
+                    document.getElementById(id).hide(300);
+                }
+            });
+        }
+
         function sponsor() {
             alert('you have clicked me');
         }
