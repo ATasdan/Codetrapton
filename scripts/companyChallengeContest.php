@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://kit.fontawesome.com/533d2d342d.js" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="./styles/indexStyle.css" />
-  <title>Codetrapton</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/533d2d342d.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="./styles/indexStyle.css" />
+    <title>Codetrapton</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             <button onclick="nextPage()" class="btn" id="gotonextPage">nextPage</button>
             <input type='text' id='search' name='search' placeholder='Enter userid 1-8'>
             <input type='button' value='Search' id='but_search'>
-            <br/>
+            <br />
             <input type='button' value='Fetch all records' id='but_fetchall'>
         </div>
     </div>
@@ -29,6 +29,7 @@
                 <th>Email</th>
                 <th>Name</th>
                 <th>Phone</th>
+                <td><button class="editbtn">edit</button></td>
             </tr>
         </thread>
         <tbody>
@@ -38,83 +39,87 @@
 
     <!-- Script--->
     <script type="text/javascript">
-
-        $(document).ready(function(){
-            $('#but_search').click(function(){
+        $(document).ready(function() {
+            $('#but_search').click(function() {
                 var user_id = $('search').val().trim();
-                if(!isNaN(user_id)){
+                if (!isNaN(user_id)) {
                     user_id = Number(user_id);
-                }
-                else{
+                } else {
                     user_id = -1;
                 }
 
-                if(user_id > -1){
+                if (user_id > -1) {
                     $.ajax({
                         url: 'ajaxfile.php',
-                        type:'post',
-                        data:{request: 'fetchbyid', user_id: user_id},
+                        type: 'post',
+                        data: {
+                            request: 'fetchbyid',
+                            user_id: user_id
+                        },
                         dataType: 'json',
-                        success: function(response){
+                        success: function(response) {
                             createRows(response);
                         }
                     });
                 }
             });
 
-            $("#but_fetchall").click(function(){
+            $("#but_fetchall").click(function() {
                 $.ajax({
                     url: 'ajaxfile.php',
-                    type:'post',
-                    data:{request: 'fetchall'},
+                    type: 'post',
+                    data: {
+                        request: 'fetchall'
+                    },
                     dataType: 'json',
-                    success: function(response){
-                        createRows(response);                        
+                    success: function(response) {
+                        createRows(response);
                     }
                 });
             });
         });
         // Create table rows
-        function createRows(response){
+        function createRows(response) {
             var len = 0;
             $('#userTable tbody').empty(); // Empty <tbody>
-            if(response != null){
+            if (response != null) {
                 len = response.length;
             }
 
-            if(len > 0){
-                for(var i=0; i<len; i++){
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
                     var id = response[i].user_id;
                     var username = response[i].username;
                     var fullname = response[i].fullname;
                     var email = response[i].email;
 
                     var tr_str = "<tr>" +
-                    "<td align='center'>" + id + "</td>" +
-                    "<td align='center'>" + username + "</td>" +
-                    "<td align='center'>" + fullname + "</td>" +
-                    "<td align='center'>" + email + "</td>" +
-                    "</tr>";
+                        "<td align='center'>" + id + "</td>" +
+                        "<td align='center'>" + username + "</td>" +
+                        "<td align='center'>" + fullname + "</td>" +
+                        "<td align='center'>" + email + "</td>" +
+                        "</tr>";
 
                     $("#userTable tbody").append(tr_str);
                 }
-            }else{
+            } else {
                 var tr_str = "<tr>" +
-                "<td align='center' colspan='4'>No record found.</td>" +
-                "</tr>";
-            
+                    "<td align='center' colspan='4'>No record found.</td>" +
+                    "</tr>";
+
                 $("#userTable tbody").append(tr_str);
             }
         }
     </script>
     <script type="text/javascript">
-    function sponsor(){
-        alert('you have clicked me');
-    }
+        function sponsor() {
+            alert('you have clicked me');
+        }
 
-    function nextPage(){
-        document.location.href="createSponsor.php";
-    }
-</script>
+        function nextPage() {
+            document.location.href = "createSponsor.php";
+        }
+    </script>
 </body>
+
 </html>
