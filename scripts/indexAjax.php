@@ -22,6 +22,7 @@
             if(!$registerResult){
                 $response = "<h3 id=\"errorMsg\">This username is already registered!</h3>";
             }
+
         } elseif ($queryType == "devLogin") {
             $query = "SELECT username,fullname FROM users WHERE username = '$username' AND password='$password';";
             $devLoginResult = pg_query($db_conn, $query);
@@ -57,3 +58,4 @@
         echo $response;
         die;
     }
+
