@@ -420,6 +420,17 @@
               password: password
             },
             success: function(response) {
+              if(!response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>"){
+                const responseParams = response.trim().split(",");
+                console.log(responseParams);
+                if(responseParams[1] !== "developer"){
+                  $('#devResponse').html("<h3 id=\"errorMsg\">This user is not a developer</h3>");
+                }
+                else{
+                  window.location.href = `./pages/developer.php?user_id=${responseParams[0]}`
+                }
+                return false;
+              }
               $('#devResponse').html(response)
             }
           })
@@ -467,6 +478,16 @@
               password: password
             },
             success: function(response) {
+              if(!response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>"){
+                const responseParams = response.trim().split(",");
+                if(responseParams[1] !== "editor"){
+                  $('#editorResponse').html("<h3 id=\"errorMsg\">This user is not an editor</h3>");
+                }
+                else{
+                  window.location.href = `./pages/editor.php?user_id=${responseParams[0]}`
+                }
+                return false;
+              }
               $('#editorResponse').html(response)
             }
           })
@@ -515,6 +536,17 @@
               password: password
             },
             success: function(response) {
+              if(response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>"){
+                
+                const responseParams = response.trim().split(",");
+                if(responseParams[1] !== "company"){
+                  $('#companyResponse').html("<h3 id=\"errorMsg\">This user is not a company</h3>");
+                }
+                else{
+                  window.location.href = `./pages/company.php?user_id=${responseParams[0]}`
+                }
+                return false;
+              }
               $('#companyResponse').html(response)
             }
           })

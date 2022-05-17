@@ -62,7 +62,7 @@
         if (isset($_POST["editorName"])) {
             $name = $_POST["editorName"];
             $email = $_POST["editorEmail"];
-            $password = $_POST["editorPassword"];
+            $password = $_POST["editorPassword"]; 
             $type = "editor";
 
         } elseif (isset($_POST["companyName"])) {
