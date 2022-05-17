@@ -75,7 +75,7 @@
                         $interviewResult = "Not attempted";
                         $resultStyle = "color:grey";
                     }
-                    elseif($row['is_answer_correct'] == "true"){
+                    elseif(trim($row['is_answer_correct']) == "true"){
                         $interviewResult = "Passed";
                         $resultStyle = "color:green";
                     }
