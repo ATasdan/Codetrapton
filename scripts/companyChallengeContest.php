@@ -16,6 +16,7 @@
         <div class="btnContainer">
             <button onclick="sponsor()" class="btn" id="sponsorBtn">sponsor</button>
             <button onclick="nextPage()" class="btn" id="gotonextPage">nextPage</button>
+            <button onclick="viewComment()" class="btn" id="seecomments">see comment</button>
             <input type='text' id='search' name='search' placeholder='Enter userid 1-8'>
             <input type='button' value='Search' id='but_search'>
             <br />
@@ -29,7 +30,6 @@
                 <th>Email</th>
                 <th>Name</th>
                 <th>Phone</th>
-                <td><button class="editbtn">edit</button></td>
             </tr>
         </thread>
         <tbody>
@@ -41,7 +41,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#but_search').click(function() {
-                var user_id = $('search').val().trim();
+                var user_id = document.getElementById('search').value;
                 if (!isNaN(user_id)) {
                     user_id = Number(user_id);
                 } else {
@@ -132,6 +132,10 @@
 
         function sponsor() {
             alert('you have clicked me');
+        }
+
+        function viewComment() {
+            document.location.href = "viewComment.php";
         }
 
         function nextPage() {

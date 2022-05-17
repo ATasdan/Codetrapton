@@ -6,7 +6,7 @@ if (isset($_POST)) {
     $user_id = $_POST["user_id"];
     $question_id = $_POST["question_id"];
     if ($comment_body != "" and $user_id != "" and $question_id != "") {
-        $date = date("Y-m-d");
+        $date = time();
         $query = "INSERT INTO comment(user_id,question_id, comment_body, date) VALUES('$user_id', '$question_id', '$comment_body','$date');";
         $createcomment_result = pg_query($db_conn, $query);
     } else {
