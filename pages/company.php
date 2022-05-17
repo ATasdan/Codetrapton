@@ -115,7 +115,9 @@
             <hr width="100%">
             <div class="nonCoding" id="nonCodingDiv">
                 <div>
-                    <form style="display:flex;flex-direction:column;justify-content:center;align-items:center" action="company.php" method="POST">
+                    <?php
+                        echo "<form style=\"display:flex;flex-direction:column;justify-content:center;align-items:center\" action=\"company.php?user_id=$company_id\" method=\"POST\">";
+                    ?>
                         <div class="fieldContainer">
                             <input class="textInput" placeholder="enter question"type="text" name="ncTitle" id="ncTitle" required/>
                         </div>
@@ -157,7 +159,9 @@
             </div>
             
             <div style="display:none" class="coding" id="codingDiv">
-                <form style="display:flex;flex-direction:column;justify-content:center;align-items:center" action="company.php" method="POST">
+                    <?php
+                        echo "<form style=\"display:flex;flex-direction:column;justify-content:center;align-items:center\" action=\"company.php?user_id=$company_id\" method=\"POST\">";
+                    ?>
 
                     <input type="hidden" value="coding" name="qType"/>
                     <textarea class="textArea" name="cQuestion" id="cQuestion" cols="50" rows="4" placeholder="enter question" required></textarea>
