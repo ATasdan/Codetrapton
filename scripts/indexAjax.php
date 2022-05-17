@@ -19,43 +19,23 @@
             $registerResult = pg_query($db_conn, $query);
 
             $response = "";
-            if(!$registerResult){
+            if (!$registerResult) {
                 $response = "<h3 id=\"errorMsg\">This username is already registered!</h3>";
             }
-
-        } elseif ($queryType == "devLogin") {
-            $query = "SELECT username,fullname FROM users WHERE username = '$username' AND password='$password';";
-            $devLoginResult = pg_query($db_conn, $query);
-
-            $response = "";
-            if (pg_num_rows($devLoginResult) == 0) {
-                $response = "<h3 id=\"errorMsg\">Invalid username or password</h3>";
-            } else {
-                $response = "<h3>Success!</h3>";
-            }
-        } elseif ($queryType == "editorLogin") {
-            $query = "SELECT username,fullname FROM users WHERE username = '$username' AND password='$password';";
-            $editorLoginResult = pg_query($db_conn, $query);
+        } elseif ($queryType == "devLogin" || $queryType == "editorLogin" || $queryType == "companyLogin") {
+            $query = "SELECT user_id,type FROM users WHERE username = '$username' AND password='$password';";
+            $result = pg_query($db_conn, $query);
 
             $response = "";
-            if (pg_num_rows($editorLoginResult) == 0) {
+            if (pg_num_rows($result) == 0) {
                 $response = "<h3 id=\"errorMsg\">Invalid username or password</h3>";
             } else {
-                $response = "<h3>Success!</h3>";
+                $row = pg_fetch_assoc($result);
+                $response = $row['user_id'].",".$row['type'];
             }
-        } elseif ($queryType == "companyLogin") {
-            $query = "SELECT username,fullname FROM users WHERE username = '$username' AND password='$password';";
-            $companyLoginResult = pg_query($db_conn, $query);
 
-            $response = "";
-            if (pg_num_rows($companyLoginResult) == 0) {
-                $response = "<h3 id=\"errorMsg\">Invalid username or password</h3>";
-            } else {
-                $response = "<h3>Success!</h3>";
-            }
+            echo $response;
+            die;
         }
-
-        echo $response;
-        die;
     }
-
+?>

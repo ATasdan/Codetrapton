@@ -1,0 +1,250 @@
+@import "colors.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,500;0,800;1,200&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,700&family=Mukta:wght@200;300;400;500&family=WindSong&display=swap%22");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  font-family: "Karla", sans-serif;
+  flex-direction: column;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  flex:1;
+  border-bottom: 1px solid black;
+}
+
+.navMenu {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  padding-inline: 50px;
+  height: 30px;
+  align-self: flex-end;
+}
+
+.logo,
+.interviewsNav,
+.contestsNav,
+.userMenu,
+.userBox,
+.logoutBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.interviewsNav,
+.contestsNav,
+.userBox,
+.logoutBox {
+  height: 20px;
+  align-self: flex-end;
+}
+
+.interviewsNav {
+  margin-right: 100px;
+  border-bottom: 10px solid var(--color-primary);
+  padding-bottom: 5px;
+}
+
+.contestsNav {
+  border-bottom: 10px solid transparent;
+  padding-bottom: 5px;
+}
+
+.logo {
+  padding-left: 30px;
+}
+
+.logo img {
+  width: 30px;
+  height: 30px;
+}
+
+.interviewsNav i,
+.contestsNav i {
+  margin-left: 10px;
+}
+
+.userMenu {
+  margin-right: 50px;
+  align-self: flex-end;
+}
+
+.userBox i,
+.logoutBox i {
+  margin-right: 10px;
+}
+
+.userBox {
+  margin-right: 50px;
+}
+
+.interviewsNav,
+.contestsNav,
+.logoutBox {
+  cursor: pointer;
+}
+
+/* Showcase */
+.showcase{
+  flex:1;
+  min-height: 100%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+} 
+
+#createButton{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 30px 30px 0 0;
+}
+
+/* Modal */
+.modal{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid lightgray;
+  padding: 25px;
+  border-radius: 20px;
+}
+
+.questionBtns form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#ncTitle{
+  margin-left: 22px;
+  margin-bottom: 5px;
+}
+
+.coding{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: fixed; /* Positioning and size */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128,128,128,0.5); /* color */
+}
+.modal {
+  position: fixed; /* positioning in center of page */
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%,-50%);
+  background-color: white; /* background color */
+}
+.list{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 800px;
+  flex-direction: column;
+  padding-left: 50px;
+}
+.list h1{
+  align-self: center;
+}
+.listContainer{
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary);
+  max-width: 800px;
+  min-width: 500px;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+/* Common */
+
+.btn {
+  width: 150px;
+  height: 50px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--color-primary);
+  color: white;
+  margin: 5px;
+  font-size: 15px;
+}
+
+.btn:hover {
+  background-color: var(--color-secondary);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.fieldContainer {
+  width: 300px;
+}
+
+.fieldContainer h1 {
+  font-size: 17px;
+}
+
+.textInput,textArea {
+  background-color: var(--color-bg);
+  border: none;
+  height: 50px;
+  width: 275px;
+  border-radius: 25px;
+  padding: 15px;
+  margin-top: 10px;
+  overflow-y: hidden;
+}
+
+textarea{
+  height:150px;
+}
+
+.textInput input:focus,textArea:focus {
+  outline: none;
+}
+
+select{
+  border: none;
+  height: 50px;
+  width: 275px;
+  border-radius: 25px;
+  padding: 15px;
+  background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16' fill='%23000000' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>")
+    no-repeat;
+  background-position: calc(100% - 0.75rem) center !important;
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  padding-right: 2rem !important;
+  background-color: var(--color-bg);
+}
+
+select:focus {
+  outline: none;
+}

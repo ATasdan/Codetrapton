@@ -1,6 +1,6 @@
 
 <?php
-    require('./db/config.php');
+    require('../db/config.php');
     ?>
 <html lang="en">
 <head>
@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Problems</title>
-    <script src="./scripts/filter.js"></script>
+    <script src="../scripts/filter.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 </head>
@@ -104,7 +104,7 @@
                 var value = "question";
         //alert("checked radio 1");
         $.ajax({
-            url: "./scripts/problemsAjax.php",
+            url: "../scripts/problemsAjax.php",
             type: "POST",
             data: {request: value},
             beforeSend:function(){
@@ -124,7 +124,7 @@
                 var value = "coding_question";
         //alert("checked radio 1");
         $.ajax({
-            url: "./scripts/problemsAjax.php",
+            url: "../scripts/problemsAjax.php",
             type: "POST",
             data: {request: value},
             beforeSend:function(){
@@ -143,7 +143,7 @@
                 var value = "non_coding_question";
                 //alert("checked radio 2");
         $.ajax({
-            url: "./scripts/problemsAjax.php",
+            url: "../scripts/problemsAjax.php",
             type: 'POST',
             data: {request: value},
             beforeSend:function(){
@@ -158,7 +158,6 @@
          }
         })
     });
-
-    <h1>helllooo</h1>
+    </script>
 </body>
 </html>

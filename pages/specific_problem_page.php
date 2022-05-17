@@ -1,5 +1,5 @@
 <?php
-    require('./db/config.php');
+    require('../db/config.php');
 
     if (isset($_GET["question_id"])) {
         $specific_question_id = $_GET["question_id"];
@@ -86,7 +86,7 @@
   
     <!-- This script tag contains the 
         javascript code in the written URL -->
-        <script src="./scripts/countdown.js"></script>
+        <script src="../scripts/countdown.js"></script>
 
         </div>
 
