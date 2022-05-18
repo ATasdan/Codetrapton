@@ -2,7 +2,6 @@
 require('../db/config.php');
 
 if (isset($_GET["question_id"]) && isset($_GET["user_id"])) {
-  echo "burası";
   $specific_question_id = $_GET["question_id"];
   $user_id = $_GET["user_id"];
 }
@@ -67,6 +66,12 @@ if (isset($_GET["question_id"]) && isset($_GET["user_id"])) {
 </head>
 
 <body>
+  <div class="buttonContainer">
+    <div>
+      <input type='button' class="btn" value='View Comments' id='view_comments'>
+      <input type='button' class="btn" onclick="createCommentPage()" value='Create Comment' id='create_comment'>
+    </div>
+  </div>
   <div class="wrapper">
     <div>
       <?php
@@ -104,6 +109,42 @@ if (isset($_GET["question_id"]) && isset($_GET["user_id"])) {
 
 
     <script type="text/javascript">
+      function createCommentPage() {
+        window.location.href = "../scripts/createComment.php";
+
+      }
+
+      $(document).ready(function() {
+        $('#view_comments').click(function() {
+          window.location.href = "../scripts/viewComment.php";
+        });
+      });
+
+      function createRows(response) {
+        var len = 0;
+        $('#commentTable tbody').empty();
+        if (response != null) {
+          len = response.length;
+        }
+        if (len > 0) {
+          for (var i = 0; i < len; i++) {
+            var user_id = response[i].user_id;
+            var comment_body = response[i].comment_body;
+
+            var tr_str = "<tr id>" +
+              "<td align='center'>" + user_id + "</td>" +
+              "<td align='center'>" + comment_body +
+              "</tr>";
+
+            $("#commentTable tbody").append(tr_str);
+          }
+        } else {
+          var tr_str = "<tr>" + "<td align='center' colspan='4'> No record found. </td>" +
+            "</tr>";
+          $("#commentTable tbody").append(tr_str);
+        }
+      }
+
       function attempted() {
         var solution = document.getElementById('solution-text').value;
         var time = document.getElementById('countdown').innerHTML;

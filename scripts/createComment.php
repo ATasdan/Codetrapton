@@ -1,3 +1,12 @@
+<?php
+require('../db/config.php');
+
+if (isset($_GET["question_id"]) && isset($_GET["user_id"])) {
+    $specific_question_id = $_GET["question_id"];
+    $user_id = $_GET["user_id"];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,29 +40,7 @@
         <input type="text" name="comment_body" id="comment_create">
     </div>
     <div class="list">
-        <label for="">User id</label>
-        <input type="text" name="user_id" id="user_id_comment">
-    </div>
-    <div class="list">
-        <label for="">Question id</label>
-        <input type="text" name="question_id" id="question_id_comment">
-    </div>
-    <div class="list">
         <button type="button" class="btn" id="createComment">Send</button>
-    </div>
-    <div class="createSponsor">
-        <i id="arrow" onclick="goBackDown()" class="fa-solid fa-arrow-up"></i>
-        <div class="prompt">
-            <h1 class="textField">Create Interview</h1>
-            <img class="monkey" src="./assets/monkey.jps" alt="" srcset="" />
-        </div>
-        <form class="forms" action="index.php" method="post" target="refresh">
-            <input type="hidden" name="action" value="register">
-            <div class="fieldContainer">
-                <h1>Sponsor</h1>
-                <input type="text" name="sponsor" id="regname" required />
-            </div>
-        </form>
     </div>
 
     <script>
