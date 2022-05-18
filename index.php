@@ -47,6 +47,26 @@
         <input type="email" name="email" id="regmail" required />
       </div>
 
+      if (username == "admin" && password == "admin") {
+      window.location.href = './pages/admin.php';
+      return false;
+      }
+      $.ajax({
+      url: '/scripts/indexAjax.php',
+      type: 'POST',
+      data: {
+      action: 'devLogin',
+      username: username,
+      password: password
+      },
+      success: function(response) {
+      if (!response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>") {
+      const responseParams = response.trim().split(",");
+      console.log(responseParams);
+      if (responseParams[1] !== "developer") {
+      $('#devResponse').html("<h3 id=\"errorMsg\">This user is not a developer</h3>");
+      } else {
+      window.location.href = `./pages/developer.php?user_id=${responseParams[0]}`
 
       <div class="fieldContainer">
         <h1>Country</h1>
@@ -379,6 +399,25 @@
     </form>
   </div>
 
+  if (username == "admin" && password == "admin") {
+  window.location.href = './pages/admin.php';
+  return false;
+  }
+  $.ajax({
+  url: '/scripts/indexAjax.php',
+  type: 'POST',
+  data: {
+  action: 'editorLogin',
+  username: username,
+  password: password
+  },
+  success: function(response) {
+  if (!response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>") {
+  const responseParams = response.trim().split(",");
+  if (responseParams[1] !== "editor") {
+  $('#editorResponse').html("<h3 id=\"errorMsg\">This user is not an editor</h3>");
+  } else {
+  window.location.href = `./pages/editor.php?user_id=${responseParams[0]}`
   <div class="devLogin">
     <i id="arrow" onclick="goBackRight()" class="fa-solid fa-arrow-right"></i>
     <div class="promptDev">
@@ -418,9 +457,11 @@
                 const responseParams = response.trim().split(",");
                 console.log(responseParams);
                 if (responseParams[1] !== "developer") {
-                  $('#devResponse').html("<h3 id=\"errorMsg\">This user is not a developer</h3>");
+                  $('#devResponse').html(
+                    "<h3 id=\"errorMsg\">This user is not a developer</h3>");
                 } else {
-                  window.location.href = `./pages/developer.php?user_id=${responseParams[0]}`
+                  window.location.href =
+                    `./pages/problems_page.php?user_id=${responseParams[0]}`
                 }
                 return false;
               }
@@ -463,28 +504,49 @@
             return false;
           }
           $.ajax({
-            url: '/scripts/indexAjax.php',
-            type: 'POST',
-            data: {
-              action: 'editorLogin',
-              username: username,
-              password: password
-            },
-            success: function(response) {
-              if (!response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>") {
-                const responseParams = response.trim().split(",");
-                if (responseParams[1] !== "editor") {
-                  $('#editorResponse').html("<h3 id=\"errorMsg\">This user is not an editor</h3>");
-                } else {
-                  window.location.href = `./pages/editor.php?user_id=${responseParams[0]}`
-                }
-                return false;
-              }
-              $('#editorResponse').html(response)
-            }
-          })
-          return false;
-        }
+                url: '/scripts/indexAjax.php',
+                type: 'POST',
+                data: {
+                  action: 'companyLogin',
+                  username: username,
+                  password: password
+                },
+                success: function(response) {
+                    if (response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>") {
+
+                      const responseParams = response.trim().split(",");
+                      if (responseParams[1] !== "company") {
+                        $('#companyResponse').html("<h3 id=\"errorMsg\">This user is not a company</h3>");
+                      } else {
+                        window.location.href = `./pages/company.php?user_id=${responseParams[0]}`
+                        if (username == "admin" && password == "admin") {
+                          window.location.href = './pages/admin.php';
+                          return false;
+                        }
+                        $.ajax({
+                          url: '/scripts/indexAjax.php',
+                          type: 'POST',
+                          data: {
+                            action: 'editorLogin',
+                            username: username,
+                            password: password
+                          },
+                          success: function(response) {
+                            if (!response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>") {
+                              const responseParams = response.trim().split(",");
+                              if (responseParams[1] !== "editor") {
+                                $('#editorResponse').html(
+                                  "<h3 id=\"errorMsg\">This user is not an editor</h3>");
+                              } else {
+                                window.location.href = `./pages/editor.php?user_id=${responseParams[0]}`
+                              }
+                              return false;
+                            }
+                            $('#editorResponse').html(response)
+                          }
+                        })
+                        return false;
+                      }
       </script>
       <div id="editorResponse"></div>
       <button type="submit" id="editorLoginBtn" class="btn" onclick="return editorLoginF()">login</button>
@@ -532,7 +594,8 @@
 
                 const responseParams = response.trim().split(",");
                 if (responseParams[1] !== "company") {
-                  $('#companyResponse').html("<h3 id=\"errorMsg\">This user is not a company</h3>");
+                  $('#companyResponse').html(
+                    "<h3 id=\"errorMsg\">This user is not a company</h3>");
                 } else {
                   window.location.href = `./pages/company.php?user_id=${responseParams[0]}`
                 }

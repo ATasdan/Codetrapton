@@ -8,7 +8,7 @@ const welcomeContainer = document.querySelector(".welcome").style;
 const registerContainer = document.querySelector(".register").style;
 const devLoginContainer = document.querySelector(".devLogin").style;
 const editorLoginContainer = document.querySelector(".editorLogin").style;
-const companyLoginContainer = document.querySelector(".companyLogin").style
+const companyLoginContainer = document.querySelector(".companyLogin").style;
 
 if (history.scrollRestoration) {
   history.scrollRestoration = "manual";
@@ -85,7 +85,7 @@ const companyLogin = () => {
     companyLoginContainer.transition = "600ms";
     companyLoginContainer.transform = "none";
   }, 300);
-}
+};
 
 const goBackDown = () => {
   registerContainer.transform = "translateY(1500px)";
@@ -105,4 +105,7 @@ const goBackUp = () => {
 const goBackLeft = () => {
   companyLoginContainer.transform = "translateX(1500px)";
   setTimeout((welcomeContainer.transform = "none"), 300);
-}
+};
+const goToProblemsPage = () => {
+  onclick = "location.href=''";
+};
