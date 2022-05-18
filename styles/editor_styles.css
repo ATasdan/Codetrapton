@@ -1,0 +1,207 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,500;0,800;1,200&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,700&family=Mukta:wght@200;300;400;500&family=WindSong&display=swap");
+
+
+
+body{
+  font-family: "Karla", sans-serif;
+  background-color: #f0f0f0;
+}
+.header_container {
+  display: flex;
+  flex-direction: row;
+}
+
+li,
+a,
+button {
+  font-family: "Karla", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+}
+
+.codeatrapton_logo {
+  cursor: default;
+  height: 20px;
+}
+.title {
+  font-weight: 500;
+}
+
+.nav__links {
+  list-style: none;
+}
+.nav__links li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.nav__links h1 {
+    font-family: "Karla", sans-serif;
+  font-size: 16px;
+  cursor: default;
+  display: inline-block;
+  padding: 0px;
+}
+
+.nav__links li a {
+  transition: all 0.3s ease 0s;
+  color: black;
+}
+
+.nav__links li a:hover {
+  transition: all 0.3s ease 0s;
+  color: antiquewhite;
+}
+
+.main_content {
+    color: black;
+  padding-left: 50px; 
+  display: flex;
+  width: 70%;
+  flex-wrap: wrap;
+  
+}
+
+
+/* CSS */
+.button-28 {
+  appearance: none;
+  background-color: transparent;
+  border: 6px solid #1A1A1A;
+  border-radius: 10px;
+  color: #3B3B3B;
+  cursor: pointer;
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  min-height: 60px;
+  min-width: 0px;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  height: 160px;
+  width: 250px;
+  margin: 20px;
+  touch-action: manipulation;
+  will-change: transform;
+}
+
+.button-28:disabled {
+  pointer-events: none;
+}
+
+.button-28:hover {
+  color: black;
+  background-color: #D0D0D0;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-28:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.page_title{
+  margin-left: 50px;
+  font-family: "Karla", sans-serif;
+  font-size: 20px;
+
+}
+
+.title_div{
+  display:flex;
+  align-items: center;
+}
+
+.blueline{
+  width: 10px;
+  color:aqua;
+  border: none;
+  height: 10px;
+  position: absolute;
+}
+
+.textfield {
+  margin: 10px;
+  width: 70vw;
+  padding: 12px 20px;
+  background-color: #EBEBEB;
+  border-radius: 20px;
+  border: none;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  resize: none;
+  min-height: 300px;
+  box-sizing: border-box;
+}
+
+.titlefield {
+  margin: 10px;
+  width: 70vw;
+  padding: 12px 20px;
+  background-color: #EBEBEB;
+  border-radius: 20px;
+  border: none;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  resize: none;
+  height: 70px;
+  box-sizing: border-box;
+}
+
+.q-selects{
+  padding: 0;
+}
+
+.q-selects li{
+  list-style: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  list-style-type: none;
+  padding:0 ;
+}
+
+.submit_btn{
+  background-color: #5AC4F7;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+}
+
+.testcase_table{
+  color: black;
+  padding-left: 50px; 
+  margin-top: 20px;
+  display: flex;
+  width: 70%;
+  flex-wrap: wrap;
+
+}
+
+.center_text {
+  margin: auto;
+  text-align: center;
+}
