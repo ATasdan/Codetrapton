@@ -78,7 +78,7 @@ if (isset($_GET["user_id"])) {
                     echo "<tr>
               <td>" . $row['question_title'] . "</td>
               <td> DEFAULT </td>
-              <td> 0</td>
+              <td>" .$row['attempt_count']."</td>
               <td>" . $row["difficulty"] . " </td>
               <td>" . $row["question_type"] . " </td>
               <td>" . $row["is_premium"] . " </td>

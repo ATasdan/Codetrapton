@@ -24,10 +24,18 @@
         echo json_encode("TRUE");
         $query = "UPDATE user_question_attempt SET iscorrect = TRUE WHERE user_id = $user_id AND attempt_id = $newAttemptId AND question_id = $specific_question_id";
         $result = pg_query($db_conn, $query);
+
+        $query = "SELECT updateAttemptCount($specific_question_id)";
+        $result = pg_query($db_conn, $query);
+
+        
         die();
     }else{
         echo json_encode("FALSE");
         $query = "UPDATE user_question_attempt SET iscorrect = FALSE WHERE user_id = $user_id AND attempt_id = $newAttemptId AND question_id = $specific_question_id";
+        $result = pg_query($db_conn, $query);
+
+        $query = "SELECT updateAttemptCount($specific_question_id)";
         $result = pg_query($db_conn, $query);
         die();
     }

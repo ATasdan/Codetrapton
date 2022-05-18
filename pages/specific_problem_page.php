@@ -72,15 +72,20 @@ if (isset($_GET["question_id"]) && isset($_GET["user_id"])) {
       <?php
       $query = "SELECT * FROM question WHERE question_id = '$specific_question_id';";
       $registerResult = pg_query($db_conn, $query);
+
+      $query2 = "SELECT findBestTime($specific_question_id)";
+      $registerResult2 = pg_query($db_conn, $query2);
       if (!$registerResult) {
         echo "An error occurred.\n";
         exit;
       }
       while ($row = pg_fetch_assoc($registerResult)) {
+          $row2 = pg_fetch_assoc($registerResult2);
         echo "
             <div class = 'title-container'><h1>SOLVE PROBLEM:" . $row['question_title'] . " </h1></div>
             <div class = 'flex-container'>
             <div><h4>Difficulty: " . $row["difficulty"] . "</h4></div>
+            <div><h4>BEST TIME: " . $row2['findbesttime'] . "</h4></div>
             <div><h4><i class='fa fa-clock-o' style='font-size:18px'></i> " . $row["time_limit"] . "min </h4></div>
             </div>
             <h1>PROMPT:" . $row['question_prompt'] . " </h1>
