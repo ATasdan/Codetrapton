@@ -27,13 +27,12 @@
 
 <body>
     <div class="sponsorPart">
-        <div class="list">
+        <div class="buttonContainer">
             <input type='button' value='Fetch All Developers' class="btn" id='but_fetchall'>
             <input type='button' value='Fetch All Companies' class="btn" id='but_fetch_companies'>
             <input type='button' value='Fetch All Editors' class="btn" id='but_fetch_editors'>
         </div>
-        <div class="list">
-            <button onclick="createComment()" class="btn" id="gotonextPage">Create Comment</button>
+        <div class="buttonContainer">
             <button onclick="viewComment()" class="btn" id="seecomments">See Comment</button>
             <input type='text' id='search' name='search' placeholder='Enter userid 1-8'>
             <input type='button' value='Search' class="btn" id='but_search'>
@@ -224,10 +223,12 @@
         }
 
         function viewComment() {
+            alert("232343");
             document.location.href = "viewComment.php";
         }
 
         function createComment() {
+            alert("burası");
             document.location.href = "createComment.php";
         }
     </script>
