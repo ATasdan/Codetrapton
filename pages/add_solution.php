@@ -36,19 +36,22 @@
     <div class="title_div">
 
         <?php 
+
+        $query = "INSERT INTO question_test_case(
+            question_id, input_str, output_str, input_int, output_int)
+            VALUES (?, ?, ?, ?, ?, ?);";
+            
         $solution = $_POST["q-solution"];
-        $question_nature = "coding_question";
+        $question_nature = "coding_question_view";
 
         if ( isset($_POST["programming_language"])){
           $programming_language = $_POST["programming_language"];
-          $question_nature = "non_coding_question";
+          $question_nature = "non_coding_question_view";
         }
-
-        
 
         if (isset($_SESSION["q_id"])){
           $question_id = $_SESSION["q_id"];
-          $query = "UPDATE non_coding_question SET solution='$solution' WHERE question_id ='$question_id'";
+          $query = "UPDATE question SET solution='$solution' WHERE question_id ='$question_id'";
         }
 
         else {
@@ -79,15 +82,15 @@
     </div>
     <div class="main_content">
 
-        <form action="addtestcase.php" method="POST">
+        <form action="testcase_formhandler.php" method="POST">
 
             <div>
 
                 <br>
                 <label for="input[0]">Input </label>
-                <input type="text" name="input[0]">
+                <input type="text" name="input">
                 <label for="output[0]">Output </label>
-                <input type="text" name="output[0]">
+                <input type="text" name="output">
                 <button type="submit" name="add-test">Add Test Case</button>
             </div>
 
@@ -97,51 +100,7 @@
 
     </div>
 
-    <?php 
-        if (isset($_POST["sol-submit"])){
-        
-      
-        $query = "INSERT INTO coding_question (question_title, difficulty, question_type, question_prompt, question_body, solution, time_limit, is_premium)
-        VALUES ( '$question_title', '$difficulty', '$question_type', '$question_prompt', '$question_body', 'nn', $time_limit, '$is_premium') RETURNING question_id";
-    
-        $addProblemResult = pg_query($db_conn, $query);
 
-        $response = "";
-            if(!$addProblemResult){
-                $response = "<h3 id=\"errorMsg\">Cannot add problem!</h3>";
-        }
-
-        echo $response;
-
-        $row = pg_fetch_row( $addProblemResult);
-        $_SESSION["q_id"]= $row[0]; //POST QID ...
-        
-
-      }
-      else {
-        echo "<h3 id=\"errorMsg\">Cannot add problem!</h3>";
-      }
-        
-        ?>
-
-
-    <div class="testcase_table">
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Input</th>
-                    <th>Output</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-
-    </div>
-    <button value="Skip" id="btn-skip" onClick="document.location.href='add_solution.php'"> Skip this
-        step </button>
 
 
 

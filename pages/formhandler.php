@@ -69,13 +69,13 @@
         }
 
         if ( strcasecmp($question_nature,"coding" ) == 0){
-          $query = "INSERT INTO coding_question (question_title, difficulty, question_type, question_prompt, question_body, solution, time_limit, is_premium)
-        VALUES ( '$question_title', '$difficulty', '$question_type', '$question_prompt', '$question_body', 'nn', $time_limit, '$is_premium') RETURNING question_id";
+          $query = "INSERT INTO coding_question_view (question_title, difficulty, question_type, question_prompt, question_body, solution, time_limit, is_premium, question_nature)
+        VALUES ( '$question_title', '$difficulty', '$question_type', '$question_prompt', '$question_body', '', $time_limit, '$is_premium', 'coding_question') RETURNING question_id";
         }
 
         else {
-          $query = "INSERT INTO non_coding_question (question_title, difficulty, question_type, question_prompt, question_body, solution, time_limit, is_premium, is_multi_choice)
-            VALUES ('$question_title', '$difficulty', '$question_type', '$question_prompt', '$question_body', 'nn', $time_limit,  '$is_premium','$is_multi_choice') RETURNING question_id";
+          $query = "INSERT INTO non_coding_question_view (question_title, difficulty, question_type, question_prompt, question_body, solution, time_limit, is_premium, is_multi, question_nature)
+            VALUES ('$question_title', '$difficulty', '$question_type', '$question_prompt', '$question_body', '', $time_limit,  '$is_premium','$is_multi_choice', 'non_coding_question') RETURNING question_id";
         }
 
         $addProblemResult = pg_query($db_conn, $query);
