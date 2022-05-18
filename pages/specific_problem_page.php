@@ -3,6 +3,7 @@
 
     if (isset($_GET["question_id"])) {
         $specific_question_id = $_GET["question_id"];
+        $user_id = $_GET["user_id"];
     }
 ?>
 
@@ -13,6 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
     <title>Document</title>
 
@@ -46,6 +49,12 @@
             border-radius: 25px;
             background-color: #B1D4E0;
         }
+        .submit-solution-area {
+            overflow-y: scroll;
+            overflow-x: scroll;
+            height: 200px;
+            resize: both;
+        }
     </style>
 </head>
 <body>
@@ -67,14 +76,15 @@
             </div>
             <h1>PROMPT:". $row['question_prompt'] ." </h1>
 
-            <td>Time Left: </td>
-            <div ><p id='countdown'>". $row["time_limit"] ."</p></div>
-            <td>SUBMIT YOUR ANSWER BELOW: </td>
-            <input type='text' id='name' name='name' style='height:120px; width:200px;'>
-            <button type='button'>SUBMIT!</button> ";
+            <td>Time Spent: </td>
+            <div ><p id='countdown'>". $row["time_limit"] ."</p></div>";
             }
             $question = pg_fetch_row($registerResult)
     ?>
+            <td>SUBMIT YOUR ANSWER BELOW: </td>
+            <form action='' method='post' target='_blank'>
+            <textarea id = 'solution-text'class = 'submit-solution-area'></textarea>
+            <button type='button' onclick="attempted()">SUBMIT!</button></form>
             </div>
 
     <div>
@@ -83,7 +93,38 @@
     </div>  
 
 
-  
+    <script type="text/javascript">
+        function attempted() {
+          var solution = document.getElementById('solution-text').value;
+          var time = document.getElementById('countdown').innerHTML;
+
+          if (solution === "") {
+              alert("SOLUTIN IS EMPTY")
+            return false
+          }
+          $.ajax({
+            url: '/scripts/attempAjax.php',
+            type: 'POST',
+            dataType: "JSON",
+            data: {
+              solution: solution,
+              user_id: <?php echo"$user_id"; ?>,
+              specific_question_id: <?php echo"$specific_question_id"; ?>,
+              time:time
+            },
+            success: function(response) {
+              console.log(response);
+              if(response == "TRUE"){
+                alert("TRUE ANSWER! YOUR TIME: " +  time);
+              }
+              else{
+                alert("FALSE ANSWER! YOUR TIME: " +  time);
+              }
+            }
+          })
+          return false;
+        }
+      </script>
     <!-- This script tag contains the 
         javascript code in the written URL -->
         <script src="../scripts/countdown.js"></script>
