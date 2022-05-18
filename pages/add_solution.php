@@ -1,0 +1,152 @@
+<?php
+  require('../db/config.php');
+  session_start();
+  if (!isset($_POST["sol-submit"])){
+    header("Location: unavailable.php"); 
+    exit();
+  }
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/editor_styles.css">
+    <script src="https://kit.fontawesome.com/533d2d342d.js" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <nav>
+        <ul class="nav__links">
+            <h1 class="title">codeatrapton</h1>
+            <img class="codeatrapton_logo" src="../assets/codeatrapton_logo.svg" alt="codeatrapton_logo">
+            <li><a href="editor.php"> Editor Panel </a></li>
+            <li class="link_with_symbol"><a href="#"> Challenges & Contests </a><img class="pp"
+                    src="../assets/party_popper.svg" width="16px"> </li>
+        </ul>
+    </nav>
+    <hr>
+    <div class="title_div">
+
+        <?php 
+        $solution = $_POST["q-solution"];
+        $question_nature = "coding_question";
+
+        if ( isset($_POST["programming_language"])){
+          $programming_language = $_POST["programming_language"];
+          $question_nature = "non_coding_question";
+        }
+
+        
+
+        if (isset($_SESSION["q_id"])){
+          $question_id = $_SESSION["q_id"];
+          $query = "UPDATE non_coding_question SET solution='$solution' WHERE question_id ='$question_id'";
+        }
+
+        else {
+          die;
+        }
+         
+        $addSolutionResult = pg_query($db_conn, $query);
+        $response = "";
+        if(!$addSolutionResult){
+            $response = "<h3 id=\"errorMsg\">Cannot add problem!</h3>";
+        }
+        echo $response;
+        
+        ?>
+
+        <i style="cursor: pointer; margin-left:50px;" onclick="history.back()" class="fa-solid fa-angle-left"></i>
+
+
+
+        <h1 class="page_title">Add Test Case to
+
+            <?php 
+
+        echo ($_POST["hidden-qt"]);
+      ?>
+            Problem
+        </h1>
+    </div>
+    <div class="main_content">
+
+        <form action="addtestcase.php" method="POST">
+
+            <div>
+
+                <br>
+                <label for="input[0]">Input </label>
+                <input type="text" name="input[0]">
+                <label for="output[0]">Output </label>
+                <input type="text" name="output[0]">
+                <button type="submit" name="add-test">Add Test Case</button>
+            </div>
+
+            <input type="hidden" id="hidden-qid" value=<?php echo $_SESSION["q_id"]; ?> name="hidden-qid" !checked />
+
+        </form>
+
+    </div>
+
+    <?php 
+        if (isset($_POST["sol-submit"])){
+        
+      
+        $query = "INSERT INTO coding_question (question_title, difficulty, question_type, question_prompt, question_body, solution, time_limit, is_premium)
+        VALUES ( '$question_title', '$difficulty', '$question_type', '$question_prompt', '$question_body', 'nn', $time_limit, '$is_premium') RETURNING question_id";
+    
+        $addProblemResult = pg_query($db_conn, $query);
+
+        $response = "";
+            if(!$addProblemResult){
+                $response = "<h3 id=\"errorMsg\">Cannot add problem!</h3>";
+        }
+
+        echo $response;
+
+        $row = pg_fetch_row( $addProblemResult);
+        $_SESSION["q_id"]= $row[0]; //POST QID ...
+        
+
+      }
+      else {
+        echo "<h3 id=\"errorMsg\">Cannot add problem!</h3>";
+      }
+        
+        ?>
+
+
+    <div class="testcase_table">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Input</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+    </div>
+    <button value="Skip" id="btn-skip" onClick="document.location.href='add_solution.php'"> Skip this
+        step </button>
+
+
+
+
+
+</body>
+
+</html>
