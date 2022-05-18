@@ -1,6 +1,9 @@
 
 <?php
     require('../db/config.php');
+    if (isset($_GET["user_id"])) {
+        $user_id = $_GET["user_id"];
+    }
     ?>
 <html lang="en">
 <head>
@@ -80,7 +83,7 @@
               <td>". $row["is_premium"] ." </td>
 
               <td>
-                    <a class = 'btn btn-primary btn-sm' href = './specific_problem_page.php?question_id=".$row['question_id']."'> SOLVE</a>
+                    <a class = 'btn btn-primary btn-sm' href = './specific_problem_page.php?question_id=".$row['question_id']."&user_id=$user_id'> SOLVE</a>
                     <a class = 'btn btn-primary btn-sm' href = 'like'> Like</a>
                     <a class = 'btn btn-danger btn-sm' href = 'dislike'> Dislike</a>    
                </td>
