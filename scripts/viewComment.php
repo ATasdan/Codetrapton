@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://kit.fontawesome.com/533d2d342d.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <link rel="stylesheet" href="./styles/indexStyle.css" />
+        <link rel="stylesheet" href="../styles/indexStyle.css" />
         <title>Codetrapton</title>
     </head>
 
@@ -17,7 +17,7 @@
         <div class="comments">
             <div class="btnContainer">
                 <input type='text' id='questionid' name='questionid' placeholder='Enter q id'>
-                <input type='button' value='View Comments' id='view_comments'>
+                <input type='button' class="btn" value='View Comments' id='view_comments'>
             </div>
         </div>
         <table border="1" id="commentTable" style="border-collapse:collapse;">

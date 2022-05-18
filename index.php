@@ -23,13 +23,7 @@
       <button onclick="companyLogin()" id="compBtn" class="btn">company login</button>
     </div>
     <button onclick="register()" class="btn" id="regBtn">register</button>
-    <button onclick="companychallenge()" class="btn" id="compchalBtn">Company Challenge</button>
   </div>
-  <script>
-    function companychallenge() {
-      document.location.href = "scripts/companyChallengeContest.php";
-    }
-  </script>
   <div class="register">
     <i id="arrow" onclick="goBackDown()" class="fa-solid fa-arrow-up"></i>
     <div class="promptReg">
@@ -420,13 +414,12 @@
               password: password
             },
             success: function(response) {
-              if(!response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>"){
+              if (!response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>") {
                 const responseParams = response.trim().split(",");
                 console.log(responseParams);
-                if(responseParams[1] !== "developer"){
+                if (responseParams[1] !== "developer") {
                   $('#devResponse').html("<h3 id=\"errorMsg\">This user is not a developer</h3>");
-                }
-                else{
+                } else {
                   window.location.href = `./pages/developer.php?user_id=${responseParams[0]}`
                 }
                 return false;
@@ -478,12 +471,11 @@
               password: password
             },
             success: function(response) {
-              if(!response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>"){
+              if (!response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>") {
                 const responseParams = response.trim().split(",");
-                if(responseParams[1] !== "editor"){
+                if (responseParams[1] !== "editor") {
                   $('#editorResponse').html("<h3 id=\"errorMsg\">This user is not an editor</h3>");
-                }
-                else{
+                } else {
                   window.location.href = `./pages/editor.php?user_id=${responseParams[0]}`
                 }
                 return false;
@@ -536,13 +528,12 @@
               password: password
             },
             success: function(response) {
-              if(response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>"){
-                
+              if (response !== "<h3 id=\"errorMsg\">Invalid username or password</h3>") {
+
                 const responseParams = response.trim().split(",");
-                if(responseParams[1] !== "company"){
+                if (responseParams[1] !== "company") {
                   $('#companyResponse').html("<h3 id=\"errorMsg\">This user is not a company</h3>");
-                }
-                else{
+                } else {
                   window.location.href = `./pages/company.php?user_id=${responseParams[0]}`
                 }
                 return false;

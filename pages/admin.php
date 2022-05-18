@@ -49,41 +49,48 @@
             </div>
             <button type="submit" id="companyReg" class="btn">register</button>
         </form>
+
+        <div class="field">
+            <button type="view" id="seeDevelopers" class="btn" onclick="viewDevelopers()">View Users</button>
+        </div>
     </div>
 
+    <script>
+        function viewDevelopers() {
+            document.location.href = "../scripts/viewDevelopers.php";
+        }
+    </script>
     <?php
-        require('../db/config.php');
+    require('../db/config.php');
 
-        if (isset($_POST["editorName"]) && isset($_POST["companyName"])) {
-            echo "<h2 id=\"errorMsg\">Do not enter fill both forms!</h2>";
-            die;
-        }
+    if (isset($_POST["editorName"]) && isset($_POST["companyName"])) {
+        echo "<h2 id=\"errorMsg\">Do not enter fill both forms!</h2>";
+        die;
+    }
 
-        if (isset($_POST["editorName"])) {
-            $name = $_POST["editorName"];
-            $email = $_POST["editorEmail"];
-            $password = $_POST["editorPassword"]; 
-            $type = "editor";
+    if (isset($_POST["editorName"])) {
+        $name = $_POST["editorName"];
+        $email = $_POST["editorEmail"];
+        $password = $_POST["editorPassword"];
+        $type = "editor";
+    } elseif (isset($_POST["companyName"])) {
+        $name = $_POST["companyName"];
+        $email = $_POST["companyEmail"];
+        $password = $_POST["companyPassword"];
+        $type = "company";
+    } else {
+        die;
+    }
 
-        } elseif (isset($_POST["companyName"])) {
-            $name = $_POST["companyName"];
-            $email = $_POST["companyEmail"];
-            $password = $_POST["companyPassword"];
-            $type = "company";
-        }
-        else{
-            die;
-        }
+    $query = "INSERT INTO users(type,username,email,password) VALUES ('$type','$name','$email','$password');";
 
-        $query = "INSERT INTO users(type,username,email,password) VALUES ('$type','$name','$email','$password');";
+    $result = pg_query($db_conn, $query);
 
-        $result = pg_query($db_conn, $query);
+    if ($type == "editor") {
+        echo "<h2>Editor successfully registered!</h2>";
+        die;
+    }
 
-        if ($type == "editor") {
-            echo "<h2>Editor successfully registered!</h2>";
-            die;
-        }
-
-        echo "<h2>Company successfully registered<h2>";
+    echo "<h2>Company successfully registered<h2>";
     ?>
 </body>

@@ -6,11 +6,8 @@ $request = "";
 if (isset($_POST['request'])) {
   $request = $_POST['request'];
 }
-
-// Fetch all records
-if ($request == 'fetchall') {
-
-  $query = "SELECT * FROM users";
+if ($request == 'fetcheditors') {
+  $query = "SELECT DISTINCT * FROM public.view_editor_users ";
 
   $result = pg_query($db_conn, $query);
 
@@ -20,7 +17,57 @@ if ($request == 'fetchall') {
 
     $user_id = $row['user_id'];
     $username = $row['username'];
-    $fullname = $row['fullname'];
+    $fullname = $row['phone'];
+    $email = $row['email'];
+
+    $response[] = array(
+      "user_id" => $user_id,
+      "username" => $username,
+      "fullname" => $fullname,
+      "email" => $email,
+    );
+  }
+
+  echo json_encode($response);
+  die;
+}
+if ($request == 'fetchcompanies') {
+  $query = "SELECT DISTINCT * FROM public.view_company_users ";
+
+  $result = pg_query($db_conn, $query);
+
+  $response = array();
+
+  while ($row = pg_fetch_assoc($result)) {
+
+    $user_id = $row['user_id'];
+    $username = $row['username'];
+    $email = $row['email'];
+
+    $response[] = array(
+      "user_id" => $user_id,
+      "username" => $username,
+      "email" => $email,
+    );
+  }
+
+  echo json_encode($response);
+  die;
+}
+// Fetch all records
+if ($request == 'fetchall') {
+
+  $query = "SELECT DISTINCT * FROM users WHERE type='developer' ";
+
+  $result = pg_query($db_conn, $query);
+
+  $response = array();
+
+  while ($row = pg_fetch_assoc($result)) {
+
+    $user_id = $row['user_id'];
+    $username = $row['username'];
+    $fullname = $row['phone'];
     $email = $row['email'];
 
     $response[] = array(
@@ -104,7 +151,7 @@ if ($request == 'deletebyid') {
     $userid = $_POST['user_id'];
   }
 
-  $query = "DELETE * FROM users WHERE user_id=" . $userid;
+  $query = "DELETE FROM users WHERE user_id='$userid' ";
   $result = pg_query($db_conn, $query);
 
   $response = array();
