@@ -4,6 +4,9 @@ require('../db/config.php');
 
 //echo("<script>console.log('PHP: " . $data . "');</script>");
 
+if (!empty($_POST["user_id"])) {
+    $user_id = $_POST["user_id"];
+}
 
 if (!empty($_POST['request'])) {
     $request = $_POST['request'];
@@ -74,7 +77,7 @@ if (!empty($_POST['request'])) {
                     <td>" . $row["question_type"] . " </td>
                     <td>" . $row["is_premium"] . " </td>
                     <td>
-                        <a class = 'btn btn-primary btn-sm' href = './specific_problem_page.php?question_id=" . $row['question_id'] . "'> SOLVE</a>
+                        <a class = 'btn btn-primary btn-sm' href = './specific_problem_page.php?question_id=" . $row['question_id'] . "&user_id=$user_id'> SOLVE</a>
                           <a class = 'btn btn-primary btn-sm' href = 'like'> Like</a>
                           <a class = 'btn btn-danger btn-sm' href = 'dislike'> Dislike</a>    
                      </td>
