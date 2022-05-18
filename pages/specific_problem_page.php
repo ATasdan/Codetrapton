@@ -2,6 +2,7 @@
 require('../db/config.php');
 
 if (isset($_GET["question_id"]) && isset($_GET["user_id"])) {
+  echo "burası";
   $specific_question_id = $_GET["question_id"];
   $user_id = $_GET["user_id"];
 }
